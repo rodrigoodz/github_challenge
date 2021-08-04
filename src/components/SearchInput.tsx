@@ -1,6 +1,40 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import getUsers from "../helpers/getUsers";
 import Error from "./Error";
+
+const Form = styled.form`
+  display: flex;
+  border: 2px solid #8b8989;
+  border-radius: 0.5rem;
+  width: 30%;
+  height: 2rem;
+  padding: 0rem 1rem;
+  margin: 1rem 0;
+`;
+
+const Input = styled.input`
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  width: 90%;
+  outline: none;
+  font-weight: lighter;
+  font-size: 1.3rem;
+  font-family: "Spectral", serif;
+`;
+
+const Icon = styled.button`
+  border: none;
+  width: 10%;
+  background-color: transparent;
+  transition: all 0.1s ease-in;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
 
 const SearchInput = ({ onUsersChange }: { onUsersChange: any }) => {
   const [username, setUsername] = useState<string>("");
@@ -14,28 +48,40 @@ const SearchInput = ({ onUsersChange }: { onUsersChange: any }) => {
     e.preventDefault();
     if (username.trim().length > 3) {
       setError("");
+      onUsersChange([]);
       const listOfUsers = await getUsers(username);
-      onUsersChange(listOfUsers);
+      if (listOfUsers.length > 0) {
+        onUsersChange(listOfUsers);
+      } else {
+        setError("No hay ningun usuario con ese nombre");
+      }
     } else {
+      onUsersChange([]);
       setError("Ingresar un nombre mayor a 3 caracteres");
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={username} onChange={handleInput} />
-        <button type="submit">
+      <Form onSubmit={handleSubmit}>
+        <Input type="text" value={username} onChange={handleInput} />
+        <Icon type="submit">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            fill="none"
+            width="20"
             viewBox="0 0 24 24"
+            stroke="currentColor"
+            color="white"
           >
-            <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
           </svg>
-        </button>
-      </form>
+        </Icon>
+      </Form>
       {error ? <Error errorMsg={error} /> : null}
     </>
   );
