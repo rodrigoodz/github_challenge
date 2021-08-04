@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import getUsers from "../helpers/getUsers";
+import Error from "./Error";
 
 const SearchInput = ({ onUsersChange }: { onUsersChange: any }) => {
-  const [username, setUsername] = useState<string>("aaaa");
+  const [username, setUsername] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +35,7 @@ const SearchInput = ({ onUsersChange }: { onUsersChange: any }) => {
           </svg>
         </button>
       </div>
-      {error}
+      {error ? <Error errorMsg={error} /> : null}
     </>
   );
 };
