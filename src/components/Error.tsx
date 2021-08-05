@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import styled from "styled-components";
 
 const ErrorWrapper = styled.div`
@@ -21,22 +22,24 @@ const ErrorText = styled.p`
 const Error = ({ errorMsg }: { errorMsg: string }) => {
   return (
     <ErrorWrapper>
-      <ErrorIcon
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        color="#e74c3c"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </ErrorIcon>
-      <ErrorText>{errorMsg}</ErrorText>
+      <Fade>
+        <ErrorIcon
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          color="#e74c3c"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </ErrorIcon>
+        <ErrorText>{errorMsg}</ErrorText>
+      </Fade>
     </ErrorWrapper>
   );
 };
