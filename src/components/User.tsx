@@ -60,8 +60,8 @@ const User = ({ userInfo }: { userInfo: IUser }) => {
       </Column>
       <Column>
         {/* //TODO agregar funcionalidad */}
-        <InfoButton href="www.google" target="_blank  ">
-          More info...
+        <InfoButton href={`https://github.com/${login}`} target="_blank  ">
+          Visit Profile
         </InfoButton>
       </Column>
     </UserWrapper>

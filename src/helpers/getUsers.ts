@@ -6,6 +6,7 @@ const getUsers = async (username: string) => {
       `https://api.github.com/search/users?q=${username}`
     );
     const { items } = await resp.json();
+    console.log(items);
 
     const listOfUsers = await Promise.all(
       items.slice(0, 10).map(async (item: any) => {
