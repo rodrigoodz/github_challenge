@@ -12,6 +12,11 @@ const Form = styled.form`
   height: 2rem;
   padding: 0rem 1rem;
   margin: 1rem 0;
+  transition: all 0.1s ease-in;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 const Input = styled.input`
@@ -30,11 +35,6 @@ const Icon = styled.button`
   border: none;
   width: 10%;
   background-color: transparent;
-  transition: all 0.1s ease-in;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 const SearchInput = ({ onUsersChange }: { onUsersChange: any }) => {
