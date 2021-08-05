@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Fade } from "react-awesome-reveal";
 import styled from "styled-components";
 import getUsers from "../helpers/getUsers";
 import Error from "./Error";
@@ -8,7 +7,7 @@ const Form = styled.form`
   display: flex;
   border: 2px solid #8b8989;
   border-radius: 0.5rem;
-  width: 100%;
+  width: 30%;
   height: 2rem;
   padding: 0rem 1rem;
   margin: 1rem 0;
@@ -64,27 +63,25 @@ const SearchInput = ({ onUsersChange }: { onUsersChange: any }) => {
 
   return (
     <>
-      <Fade triggerOnce>
-        <Form onSubmit={handleSubmit}>
-          <Input type="text" value={username} onChange={handleInput} />
-          <Icon type="submit">
-            <svg
-              fill="none"
-              width="20"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              color="white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </Icon>
-        </Form>
-      </Fade>
+      <Form onSubmit={handleSubmit}>
+        <Input type="text" value={username} onChange={handleInput} />
+        <Icon type="submit">
+          <svg
+            fill="none"
+            width="20"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            color="white"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </Icon>
+      </Form>
       {error ? <Error errorMsg={error} /> : null}
     </>
   );

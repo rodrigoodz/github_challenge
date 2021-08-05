@@ -1,4 +1,3 @@
-import { Fade } from "react-awesome-reveal";
 import styled from "styled-components";
 
 const H1 = styled.h1`
@@ -10,11 +9,7 @@ const H1 = styled.h1`
 `;
 
 const Title = ({ text }: { text: string }) => {
-  return (
-    <Fade triggerOnce>
-      <H1>{text}</H1>
-    </Fade>
-  );
+  return <H1>{text}</H1>;
 };
 
 export default Title;
