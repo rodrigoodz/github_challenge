@@ -28,6 +28,10 @@ const Input = styled.input`
   font-weight: lighter;
   font-size: 1.3rem;
   font-family: "Spectral", serif;
+
+  @media (max-width: 640px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Icon = styled.button`

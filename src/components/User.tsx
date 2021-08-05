@@ -13,6 +13,12 @@ const UserWrapper = styled.div`
   );
   margin: 0.5rem 0;
   border-radius: 1rem;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Column = styled.div`
@@ -26,6 +32,10 @@ const Column = styled.div`
 const Image = styled.img`
   margin-left: 1rem;
   border-radius: 0.5rem;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 const P = styled.p`
