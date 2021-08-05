@@ -9,12 +9,10 @@ const getUsers = async (username: string) => {
 
     const listOfUsers = await Promise.all(
       items.slice(0, 10).map(async (item: any) => {
-        const followers = await getFollows(
-          `https://api.github.com/users/${item.login}/followers`
+        const { following, followers } = await getFollows(
+          `https://api.github.com/users/${item.login}`
         );
-        const following = await getFollows(
-          `https://api.github.com/users/${item.login}/following`
-        );
+
         return {
           id: item.id,
           login: item.login,

@@ -1,8 +1,9 @@
 const getFollows = async (url: string) => {
   try {
     const resp = await fetch(url);
-    const data = await resp.json();
-    return data.length;
+    const { following, followers } = await resp.json();
+
+    return { following, followers };
   } catch (error) {
     return error;
   }
